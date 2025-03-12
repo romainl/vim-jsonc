@@ -61,5 +61,5 @@ Moreover, `tsconfig.json` files can "extend" other files, so we must be able to 
    $ vim
    ```
    ```
-   :echo jsonc#ParseJSONCRecursively('tsconfig.json')
+   :echo jsonc#Jsonc_decode('tsconfig.json')
    ```

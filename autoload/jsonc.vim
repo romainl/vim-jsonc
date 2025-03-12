@@ -60,7 +60,7 @@ function! jsonc#NormalizeFileName(filename, from = '')
     return found_filename_in_path
 endfunction
 
-function! jsonc#ParseJSONCRecursively(filename)
+function! jsonc#Jsonc_decode(filename)
     " tsconfig.json is actually JSONC, not JSON
     " so we need to weed out commented lines and inline comments
     " to obtain valid (but not pretty) JSON
@@ -91,7 +91,7 @@ function! jsonc#ParseJSONCRecursively(filename)
         for parent in parents
             let parent_data = parent
                         \ ->jsonc#NormalizeFileName(fnamemodify(a:filename, ':p:h'))
-                        \ ->jsonc#ParseJSONCRecursively()
+                        \ ->jsonc#Jsonc_decode()
 
             call extend(parents_data, parent_data)
         endfor
